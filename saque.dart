@@ -4,7 +4,7 @@ class Saque{
 double? valorDeSaque;
 Cliente? cliente;
 
-Saque(this.valorDeSaque, this.cliente);
+Saque({this.valorDeSaque, this.cliente});
 
 double? sacarDinheiro(){
 if(cliente!.saldoEmConta - valorDeSaque! > 0){

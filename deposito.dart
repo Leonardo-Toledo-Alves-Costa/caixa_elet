@@ -4,7 +4,9 @@ class Deposito{
   double? valorDepositado;
   Cliente cliente;
 
-  Deposito(this.valorDepositado, this.cliente);
+  Deposito(double valor, this.cliente) {
+    valorDepositado = valor;
+  }
 
   double? depositar(){
     return cliente.saldoEmConta + valorDepositado!;
