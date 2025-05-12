@@ -7,7 +7,7 @@ class Deposito{
   Deposito({this.valorDepositado, required this.cliente});
    
   double? depositar() {
-    var novoSaldo = cliente!.saldoEmConta + valorDepositado!;
-    return novoSaldo;
+      cliente?.saldoEmConta = (cliente!.saldoEmConta! + valorDepositado!)!;
+    return cliente!.saldoEmConta;
   }
 }

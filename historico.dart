@@ -19,7 +19,7 @@ class Historico {
 
     String evento = 'Depósito realizado: Cliente ${cliente?.nome ?? "Asimov"}, '
         'Valor anterior: $valorAnterior, Valor depositado: $valor, '
-        'Saldo atualizado: ${cliente?.saldoEmConta}';
+        'Saldo atualizado: ${deposito?.depositar()}';
     eventos.add(evento);
   }
 
@@ -34,7 +34,7 @@ class Historico {
 
       String evento = 'Saque realizado: Cliente ${cliente?.nome ?? 'Asimov'}, '
           'Valor anterior: $valorAnterior, Valor sacado: $valor, '
-          'Saldo atualizado: ${cliente?.saldoEmConta}';
+          'Saldo atualizado: ${saque!.sacarDinheiro()}';
       eventos.add(evento);
     } catch (e) {
       eventos.add('Tentativa de saque falhou: Saldo insuficiente.');

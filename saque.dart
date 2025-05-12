@@ -7,8 +7,8 @@ Cliente? cliente;
 Saque({this.valorDeSaque, required this.cliente});
 
 double? sacarDinheiro(){
-if(cliente!.saldoEmConta - valorDeSaque! > 0){
- cliente!.saldoEmConta -= valorDeSaque!;
+if(cliente!.saldoEmConta! - valorDeSaque! > 0){
+ cliente!.saldoEmConta = cliente!.saldoEmConta! - valorDeSaque!;
 }else{
   cliente!.saldoEmConta = 0;
 }
