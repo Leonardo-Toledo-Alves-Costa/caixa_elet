@@ -2,7 +2,7 @@ class Cliente {
   String? nome;
   double _saldoEmConta = 0.0;
 
-Cliente({required String nome, required double saldoEmConta});
+Cliente({String? this.nome});
 
 double get saldoEmConta{
   return _saldoEmConta;

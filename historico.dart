@@ -12,15 +12,14 @@ class Historico {
   // Método para registrar um depósito
   void registrarDeposito(double valor) {
     double valorAnterior = cliente?.saldoEmConta ?? 0.0;
-    cliente?.saldoEmConta = valorAnterior + valor; // Atualiza o saldo do cliente
 
     // Cria uma instância de Deposito usando o cliente atual
     deposito = Deposito(
-      valor: valor,
-      cliente: cliente ?? Cliente(nome: "Desconhecido", saldoEmConta: 0.0),
+      valorDepositado: valor,
+      cliente: cliente ?? Cliente(nome: "Desconhecido"),
     );
 
-    // Adiciona o evento ao histórico
+    // O saldo do cliente já é atualizado na classe Deposito
     String evento = 'Depósito realizado: Cliente ${cliente?.nome ?? "Desconhecido"}, '
         'Valor anterior: $valorAnterior, Valor depositado: $valor, '
         'Saldo atualizado: ${cliente?.saldoEmConta}';
@@ -31,22 +30,19 @@ class Historico {
   void registrarSaque(double valor) {
     double valorAnterior = cliente?.saldoEmConta ?? 0.0;
 
-    // Verifica se há saldo suficiente para o saque
-    if (valorAnterior >= valor) {
-      cliente?.saldoEmConta = valorAnterior - valor; // Atualiza o saldo do cliente
-
+    try {
       // Cria uma instância de Saque usando o cliente atual
       saque = Saque(
-        valor: valor,
-        cliente: cliente ?? Cliente(nome: "Desconhecido", saldoEmConta: 0.0),
+        valorDeSaque: valor,
+        cliente: cliente ?? Cliente(nome: ''),
       );
 
-      // Adiciona o evento ao histórico
-      String evento = 'Saque realizado: Cliente ${cliente?.nome ?? "Desconhecido"}, '
+      // O saldo do cliente já é atualizado na classe Saque
+      String evento = 'Saque realizado: Cliente ${cliente?.nome ?? ''}, '
           'Valor anterior: $valorAnterior, Valor sacado: $valor, '
           'Saldo atualizado: ${cliente?.saldoEmConta}';
       eventos.add(evento);
-    } else {
+    } catch (e) {
       // Adiciona um evento de falha ao histórico
       eventos.add('Tentativa de saque falhou: Saldo insuficiente.');
     }
