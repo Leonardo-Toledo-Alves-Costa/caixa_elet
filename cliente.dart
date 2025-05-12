@@ -1,16 +1,16 @@
 class Cliente {
   String? nome;
-  double _saldoEmConta = 0.0;
+  double saldoEmConta = 0.0;
 
 Cliente({String? this.nome});
 
-double get saldoEmConta{
+/* /double get saldoEmConta{
   return _saldoEmConta;
 }
 
 set saldoEmConta(double valorDepositado){
  _saldoEmConta += valorDepositado;
-}
+}*/
 
 
 }
